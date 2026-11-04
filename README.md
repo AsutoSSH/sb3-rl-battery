@@ -63,9 +63,11 @@ The observation is a flat `float32` vector containing:
 4. The elapsed physical time.
 
 For cavity cutoff `nc` and `nq` TLSs, the joint state-vector dimension is `(nc + 1) * (nq + 1)`. Therefore, the observation dimension is
+
 $$
 2(n_c+1)(N+1)+2.
 $$
+
 ### Action
 
 A one-dimensional continuous action representing the detuning control:
