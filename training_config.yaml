@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------------------
+# Training configuration
+# ---------------------------------------------------------------------------
+
+nq: 4
+tau: 2.844
+dt: 0.0889
+
+env_params:
+  wc: 1.0
+  nc: 20
+  nc_i: 4
+  wq: 1.0
+  nq: 4
+  g: 0.3
+  min_u: -1.0
+  max_u: 6.0
+  dt: 0.0889
+  tau: 2.844
+  reward_coeff: 1.0
+  quantity: ergotropy # or energy
+
+training_hyperparams:
+  # SAC optimization
+  BATCH_SIZE: 128
+  LR: 0.0003
+  ALPHA_LR: 0.0003
+
+  # Entropy schedule
+  H_START: 0.72
+  H_END: -3.0
+  H_DECAY: 20000
+
+  # Multi-objective reward schedule
+  C_START:
+    - 0.25
+    - 0.0
+  C_END:
+    - 0.0
+    - 1.0
+  C_MEAN: 10000
+  C_WIDTH: 3000
+
+  # Replay buffer
+  REPLAY_MEMORY_SIZE: 10000
+
+  # SAC parameters
+  POLYAK: 0.995
+  GAMMA: 0.993
+  HIDDEN_SIZES:
+    - 256
+    - 128
+
+  # Exploration
+  INITIAL_RANDOM_STEPS: 1000
+
+  # Training
+  USE_CUDA: true
+  TOTAL_TIMESTEPS: 20000
+
+  # Logging
+  CHECKPOINT_FREQ: 5000
+
+  REPORT_FREQ: 500
+  PLOT_FREQ: 500
+  SAVE_FREQ: 500
+  LIVE_PLOTS: true
+  SAVE_PLOTS: true
+  SAVE_CSV: true
+  MAX_POINTS: 5000
